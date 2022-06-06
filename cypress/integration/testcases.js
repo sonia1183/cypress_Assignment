@@ -18,7 +18,7 @@ describe('testcase1',function(){
         cy.get('#searchBarInput').type('doctors{enter}');
     })
     it('select first doctor',()=>{
-        cy.get(':nth-child(1) > .css-1p6j90k > a > .css-14hwr1e > .css-5glxer > .css-1a5hr2q').click();
+        cy.get(':nth-child(1) > .css-1qj8w5r > .css-lbx4v1 > .css-1te59mv').click();
     })
     it('click slot',()=>{
         cy.get(':nth-child(2) > .MuiPaper-root > .MuiCardContent-root > .flex-column > :nth-child(2) > :nth-child(3) > .slotTimeContainer > :nth-child(2)').click({force : true})
@@ -53,7 +53,7 @@ describe('testcase2',()=>{
         cy.get('#twotabsearchtextbox').type('iphone 12{enter}');
     })
     it('select first item',()=>{
-        cy.get('[data-index="2"] > :nth-child(1) > .s-widget-container > [data-component-type="s-impression-logger"] > .s-featured-result-item > .s-card-container > :nth-child(1) > :nth-child(1) > .sg-col-8-of-16 > :nth-child(1) > .a-spacing-small > .s-padding-right-small > .a-size-mini > .a-link-normal')
+        cy.get('#search > div.s-desktop-width-max.s-desktop-content.s-opposite-dir.sg-row > div.s-matching-dir.sg-col-16-of-20.sg-col.sg-col-8-of-12.sg-col-12-of-16 > div > span:nth-child(4) > div.s-main-slot.s-result-list.s-search-results.sg-row > div:nth-child(3) > div > div > div > div > div > div > div > div.sg-col.sg-col-4-of-12.sg-col-8-of-16.sg-col-12-of-20.s-list-col-right > div > div > div.a-section.a-spacing-none.s-padding-right-small.s-title-instructions-style > h2 > a')
         .invoke('removeAttr', 'target')
         .click();
     })
@@ -72,23 +72,44 @@ describe('testcase2',()=>{
 
 
 
+describe('testcase3',()=>{
+    it('visit yatra page',()=>{
+        cy.visit('https://www.cleartrip.com/',{headers: {
+                      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+                  },
+                  timeout: 60000});
+    })
+    it('login',()=>{
+        var username = 'soniajagia329@gmail.com';
+        var password = 'Sonia@123';
 
-// describe('testcase3',()=>{
-//     it('go to MakeMyTrip',()=>{
-//         cy.visit('https://www.makemytrip.com/',{headers: {
-//           'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-//       },
-//       timeout: 60000});
-//     })
-//     it('login',()=>{
-//         let username='soniarani20985@gmail.com';
-//         let password='sonia@1970';
-//         cy.get('.userSection > [data-cy="account"]').click();
-//         cy.get('[data-cy="userName"]').type(username);
-//         // cy.get('form').submit();
-//         cy.get('[data-cy="continueBtn"]').click();
-//         //cy.get('[data-cy="switchLoginFlow"] > a').click();
-//         cy.get('[data-cy="password"]').type(password);
-//         cy.get('form').submit();
-//     })
-// })
+        //cy.get('.to-ellipsis').click();
+        //cy.get('.bg-secondary-500').click();
+        cy.get('.bc-secondary-500 > .d-flex').click();
+        cy.get('[data-testid="email"]').type(username);
+        cy.get('[data-testid="password"]').type(password);
+        cy.get('.bg-secondary-500').click();
+        cy.wait(500);
+    })
+    it('select round trip',()=>{
+        //cy.get(':nth-child(2) > .flex-start > .radio__input').check();
+        cy.get('#root > div > div > div.container.w-100p.flex-1 > div > div.col-13.homeba.h-fc > div > div.flex.flex-between.flex-middle.px-4.mt-2.mb-4 > label:nth-child(2) > div.flex.flex-column.ml-3.mr-3 > p').click();
+        cy.get(':nth-child(1) > :nth-child(2) > :nth-child(1) > .p-relative > .field').type('Chandigarh');
+        cy.wait(500);
+        cy.get('.ls-reset > .to-ellipsis').click();
+        cy.get(':nth-child(5) > :nth-child(2) > :nth-child(1) > .p-relative > .field').type('Pune');
+        cy.wait(500);
+        cy.get('.ls-reset > .to-ellipsis').click();
+    })
+    it('select depature date',()=>{
+        cy.get('.col > .w-100p > :nth-child(1) > .p-relative > :nth-child(1)').click();
+        cy.get('[aria-label="Tue Jun 28 2022"] > .Day-grid > .p-1').click();
+
+        //cy.get('.w-100p > :nth-child(1) > .p-relative > :nth-child(2)').click();
+        cy.get('[aria-label="Fri Jul 08 2022"] > .Day-grid > .p-1').click();
+        cy.get('.col > .px-7').click();
+    })
+    it('wait a moment',()=>{
+        cy.wait(500);
+    })
+})
