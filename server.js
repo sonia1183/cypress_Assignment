@@ -13,10 +13,10 @@ var sender = nodemailer.createTransport({
 
 var mail = {
 	from: 'sonia1183.cse19@chitkara.edu.in',
-	to:'jatin.verma@bajajfinserv.in',
+	to:'soniarani20985@gmail.com',
 	subject: 'Cypress Report Submitted By Sonia',
-	text: 'Sir if you got report then please reply its work thank you ',
-  html:"<h1>Report</h1>",
+	text: 'name - sonia rani',
+  html:"<h1>Report</h1><br><h2>all test cases are complete </h2>",
 attachments: [
 		{
 			filename: filename,
