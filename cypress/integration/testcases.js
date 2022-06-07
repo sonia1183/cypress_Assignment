@@ -64,7 +64,7 @@ describe('testcase2',()=>{
     it('go to cart',()=>{
         cy.get("#nav-cart").click();
     })
-})
+ })
 
 
 
@@ -73,7 +73,7 @@ describe('testcase2',()=>{
 
 
 describe('testcase3',()=>{
-    it('visit yatra page',()=>{
+    it('visit ClearTrip page',()=>{
         cy.visit('https://www.cleartrip.com/',{headers: {
                       'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
                   },
@@ -83,8 +83,8 @@ describe('testcase3',()=>{
         var username = 'soniajagia329@gmail.com';
         var password = 'Sonia@123';
 
-        //cy.get('.to-ellipsis').click();
-        //cy.get('.bg-secondary-500').click();
+        cy.get('.to-ellipsis').click();
+        cy.get('.bg-secondary-500').click();
         cy.get('.bc-secondary-500 > .d-flex').click();
         cy.get('[data-testid="email"]').type(username);
         cy.get('[data-testid="password"]').type(password);
